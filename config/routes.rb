@@ -4,11 +4,10 @@ Redstoner::Application.routes.draw do
     resources :comments
   end
 
-  resources :statics, only: [:home, :donate, :whosplaying], path: '/' do
+  resources :statics, only: [:home, :donate], path: '/' do
     collection do
       get 'donate'
       get 'home'
-      get 'whosplaying'
       get 'index'
     end
   end
