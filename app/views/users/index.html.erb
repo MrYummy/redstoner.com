@@ -3,8 +3,6 @@
     <%= title "All '#{params[:role]}' users" %>
   <% elsif params[:badge] && !params[:role] %>
     <%= title "All '#{params[:badge]}' users" %>
-  <% elsif params[:role] && params[:badge] %>
-    <%= title "All '#{params[:role]}' and '#{params[:badge]}' users" %>
   <% else %>
     <%= title "All Users" %>
   <% end %>

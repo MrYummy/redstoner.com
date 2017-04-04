@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   before_filter :set_user, except: [:index, :new, :create, :lost_password, :reset_password, :suggestions]
 
   def index
-    if params[:role]
+    if params[:role] && !params[:badge]
       if params[:role].downcase == "staff"
         @users = User.joins(:role).where("roles.value >= ?", Role.get(:mod).to_i)
       else
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
           return
         end
       end
-    elsif params[:badge]
+    elsif params[:badge] && !params[:role]
       if badge = Badge.get(params[:badge])
         @users = User.joins(:badge).where(badge: badge)
       else
