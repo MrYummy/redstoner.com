@@ -1,11 +1,10 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 
 gem 'mysql2'
 gem 'jquery-rails'
-gem 'bcrypt', platforms: :ruby
-gem 'bcrypt-ruby', '3.1.5', :require => 'bcrypt'
+gem 'bcrypt' # To use ActiveModel's has_secure_password
 gem 'sanitize'
 gem 'strip_attributes'
 gem 'redcarpet', '~> 3.2.3'
@@ -34,9 +33,14 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-bundler', '~> 1.1.3'
   # windows timezone foo
-  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+  gem 'tzinfo-data', platforms: [:mingw, :mswin]
 end
 
 group :test do
   gem 'sqlite3'
+end
+
+group :production do
+  # Use unicorn as the app server
+  gem 'unicorn'
 end
